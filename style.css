@@ -1,0 +1,38 @@
+body {
+    background-color: #e4d7d2;
+}
+
+.link {
+    font-size: 36px;
+    text-decoration: none;
+}
+
+.link:hover {
+    cursor: pointer;
+}
+
+.authForm {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 200px;
+    min-height: 180px;
+    border: 10px solid #6b412d;
+    border-radius: 20px;
+}
+
+.authForm input {
+    margin: 5px;
+}
+
+.authForm input[type="submit"] {
+    font-weight: bold;
+    width: 120px;
+    height: 60px;
+    background-color: #e4d7d2;
+    border-radius: 8px;
+}
+
