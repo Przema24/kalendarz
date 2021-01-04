@@ -29,6 +29,8 @@
             <input type="submit" value="Dodaj notatkę"/>
         </form>
 
+        <div class="calendar-contener"></div>
+
     <script src="calendar.js"></script>
     </body>
 </html>
