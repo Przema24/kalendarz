@@ -36,3 +36,58 @@ body {
     border-radius: 8px;
 }
 
+.pageContent {
+    display: flex;
+    flex-flow: row nowrap;
+    align-self: center;
+}
+
+td {
+    padding: 30px;
+}
+
+.day {
+    background-color: #64be64;
+    font-size: 25px;
+}
+
+.day:hover {
+    opacity: 50%;
+}
+
+.current-day {
+    background-color: #437a43;
+}
+
+.calendar-contener {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.calendar-table {
+    background-color: #c8d8b4;
+}
+
+.calendarNotesForm {
+    margin: 20px;
+}
+
+.calendar-table-days-names {
+    background-color: #437a43;
+}
+
+.date-name {
+    font-size: 36px;
+}
+
+.input-next {
+    width:50px;
+    height: 50px;
+}
+
+.input-prev {
+    width:50px;
+    height: 50px;
+}
+
+
