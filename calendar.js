@@ -31,11 +31,13 @@ class Calendar {
         this.calendarHeader = document.createElement("div");
         this.calendarHeader.classList.add("calendar-header");
 
+        this.calendarContener.appendChild(this.calendarHeader);
         this.calendarHeader.appendChild(this.divButtons);
         this.calendarHeader.appendChild(this.calendarDateText);
-        this.calendarContener.appendChild(this.calendarHeader);
+        
 
         this.createCalendarTable();
+        
     }
 
     createButtons() {
