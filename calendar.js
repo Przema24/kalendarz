@@ -170,19 +170,7 @@ class Calendar {
             console.log(Calendar.selectedDay);
             let noteText = document.querySelector(".note").value;  
             console.log(noteText);
-
-            // import fs module in which writeFile function is defined. 
-            const fsLibrary  = require('fs');
             
-            // Data which will need to add in a file. 
-            let data = noteText;
-            
-            // Write data in 'newfile.txt' . 
-            fsLibrary.writeFile(Calendar.selectedDay, data, (error) => { 
-        
-            // In case of a error throw err exception. 
-            if (error) throw err; 
-            });
         }
     }
     ///////////////////////////////////
