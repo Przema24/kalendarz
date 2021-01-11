@@ -9,9 +9,13 @@ class Calendar {
         this.calendarHeader = null;
         this.calendarTable = null;
         this.calendarDateText = null;
+        this.selectedDay = null;
+        
     }
+    
 
     initCalendar() {
+        
         this.calendarContener = document.querySelector(".calendar-contener");
 
         this.calendarTable = document.createElement("div");
@@ -37,9 +41,11 @@ class Calendar {
         
 
         this.createCalendarTable();
-        
-    }
 
+        const btn = document.querySelector(".noteBtn");
+        btn.addEventListener("click", this.addNote);
+    }
+    
     createButtons() {
         const buttonPrev = document.createElement("button");
         buttonPrev.innerText = "<";
@@ -138,7 +144,48 @@ class Calendar {
         tab.appendChild(tr);
 
         this.calendarTable.appendChild(tab);
+
+        /////////
+
+        this.selectDate = () => {
+            Calendar.selectedDay = event.currentTarget.innerText + " " + document.querySelector(".date-name").innerText;
+            console.log(Calendar.selectedDay);
+        }
+
+        this.addEvents = (d) => {
+            d.addEventListener("click", this.selectDate);
+        }
+
+        const daysList = document.querySelectorAll(".day");
+        daysList.forEach(this.addEvents);
+
+        //////////
     }
+
+    //////////////////////////////////
+    addNote() { 
+        if (Calendar.selectedDay != null)
+        {   
+            console.log("notatka");
+            console.log(Calendar.selectedDay);
+            let noteText = document.querySelector(".note").value;  
+            console.log(noteText);
+
+            // import fs module in which writeFile function is defined. 
+            const fsLibrary  = require('fs');
+            
+            // Data which will need to add in a file. 
+            let data = noteText;
+            
+            // Write data in 'newfile.txt' . 
+            fsLibrary.writeFile(Calendar.selectedDay, data, (error) => { 
+        
+            // In case of a error throw err exception. 
+            if (error) throw err; 
+            });
+        }
+    }
+    ///////////////////////////////////
 
     
 }

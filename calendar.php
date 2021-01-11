@@ -32,7 +32,7 @@
             <div class="calendarNotesForm">
                 <textarea cols="40" rows="25" class="note">Dodaj swoją notatkę</textarea> 
                 <br />
-                <input type="button" value="Dodaj notatkę"/>
+                <input type="button" value="Dodaj notatkę" class="noteBtn"/>
             </div>
 
             <div class="calendar-contener"></div>
