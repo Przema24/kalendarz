@@ -145,8 +145,6 @@ class Calendar {
 
         this.calendarTable.appendChild(tab);
 
-        /////////
-
         this.selectDate = () => {
             Calendar.selectedDay = event.currentTarget.innerText + " " + document.querySelector(".date-name").innerText;
             console.log(Calendar.selectedDay);
@@ -159,18 +157,17 @@ class Calendar {
         const daysList = document.querySelectorAll(".day");
         daysList.forEach(this.addEvents);
 
-        //////////
+        
     }
 
     //////////////////////////////////
     addNote() { 
         if (Calendar.selectedDay != null)
         {   
-            console.log("notatka");
-            console.log(Calendar.selectedDay);
+            //console.log("notatka");
+            //console.log(Calendar.selectedDay);
             let noteText = document.querySelector(".note").value;  
-            console.log(noteText);
-            
+            //console.log(noteText); 
         }
     }
     ///////////////////////////////////
