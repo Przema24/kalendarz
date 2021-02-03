@@ -42,8 +42,30 @@ class Calendar {
 
         this.createCalendarTable();
 
+        function addNote() { 
+            console.log("dodaje notatke");
+            if (Calendar.selectedDay != null)
+            {   
+                let noteText = document.querySelector(".note").value;
+                //let noteToWrite = new Blob([noteText], {type:"text/plain"});
+                //let textToFetchURL = window.URL.createObjectURL(noteToWrite);
+                let noteNameWithoutSpace = Calendar.selectedDay.split(" ");
+                let noteName = noteNameWithoutSpace[0] + "-" + noteNameWithoutSpace[1] + "-" + noteNameWithoutSpace[2] + ".txt";
+
+
+                var my_url="http://localhost/kalendarz/saveNote.php";
+                $.ajax({
+                    type: "POST",
+                    url: my_url,
+                    data: { filecode: noteText , zapis: noteName}
+                }).done(function(msg) {
+                    alert("zapisano!");
+                });
+            }
+        }
+
         const btn = document.querySelector(".noteBtn");
-        btn.addEventListener("click", this.addNote);
+        btn.addEventListener("click", addNote);
     }
     
     createButtons() {
@@ -147,7 +169,25 @@ class Calendar {
 
         this.selectDate = () => {
             Calendar.selectedDay = event.currentTarget.innerText + " " + document.querySelector(".date-name").innerText;
+            //////////
+            //const apiUrl = "http://localhost/kalendarz";
+            //const url = apiUrl + Calendar.selectedDay;
+            //fetch(apiUrl).then(response => consile.log("cos"));
             console.log(Calendar.selectedDay);
+
+            let noteNameWithoutSpace = Calendar.selectedDay.split(" ");
+            let noteName = noteNameWithoutSpace[0] + "-" + noteNameWithoutSpace[1] + "-" + noteNameWithoutSpace[2] + ".txt";
+
+            
+
+            /////////////////////////////// read note
+            let XmlHttp; 
+            let noteContent;
+            XmlHttp = new XMLHttpRequest();
+            XmlHttp.open('GET', 'http://localhost/kalendarz/data/' + noteName, false);
+            XmlHttp.send();
+            noteContent = XmlHttp.responseText;
+            document.querySelector(".note").innerHTML = noteContent;
         }
 
         this.addEvents = (d) => {
@@ -159,19 +199,7 @@ class Calendar {
 
         
     }
-
-    //////////////////////////////////
-    addNote() { 
-        if (Calendar.selectedDay != null)
-        {   
-            //console.log("notatka");
-            //console.log(Calendar.selectedDay);
-            let noteText = document.querySelector(".note").value;  
-            //console.log(noteText); 
-        }
-    }
-    ///////////////////////////////////
-
+    
     
 }
 
