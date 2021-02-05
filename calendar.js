@@ -186,8 +186,12 @@ class Calendar {
             XmlHttp = new XMLHttpRequest();
             XmlHttp.open('GET', 'http://localhost/kalendarz/data/' + noteName, false);
             XmlHttp.send();
-            noteContent = XmlHttp.responseText;
-            document.querySelector(".note").innerHTML = noteContent;
+            if(XmlHttp.status == 200)
+            {
+                noteContent = XmlHttp.responseText;
+                document.querySelector(".note").innerHTML = noteContent;
+            }
+            
         }
 
         this.addEvents = (d) => {
